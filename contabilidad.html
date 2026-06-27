@@ -170,25 +170,28 @@
                         <table class="w-full text-left border-collapse">
                             <thead>
                                 <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Cliente</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Granel (Gramos)</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Empaques</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Estado</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200 text-center">Acciones</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Fecha</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Cliente / Local</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Detalle del Pedido</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Total Deuda</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Estado Pago</th>
                                 </tr>
                             </thead>
                             <tbody class="text-sm text-brand-dark divide-y divide-gray-100">
                                 <tr class="hover:bg-brand-lightGreen/10 transition-colors">
+                                    <td class="px-6 py-4 text-gray-500">27/06/2026</td>
                                     <td class="px-6 py-4 font-medium flex items-center gap-3">
                                         <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">C1</div>
                                         Cliente 1
                                     </td>
-                                    <td class="px-6 py-4 font-bold text-brand-dark">2000 gr</td>
-                                    <td class="px-6 py-4 font-bold text-brand-dark">3 bolsas</td>
+                                    <td class="px-6 py-4">
+                                        <p class="font-bold">2000 gr <span class="font-normal text-gray-500">(Granel)</span></p>
+                                        <p class="font-bold">3 unidades <span class="font-normal text-gray-500">(Bolsas 250g)</span></p>
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-brand-dark">$0,00</td>
                                     <td class="px-6 py-4"><span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold border border-red-200">Debe</span></td>
-                                    <td class="px-6 py-4 text-center text-gray-400 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 </tr>
-                                <!-- Puedes agregar más clientes aquí abajo copiando el bloque <tr> anterior -->
+                                <!-- Siguientes filas (Excel) -->
                             </tbody>
                         </table>
                     </div>
