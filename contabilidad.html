@@ -155,18 +155,43 @@
             </section>
 
             <!-- SECCIÓN 2: Ventas al Por Mayor y Clientes -->
-            <section class="opacity-80 hover:opacity-100 transition-opacity">
+            <section>
                 <div class="flex items-center gap-2 mb-6 border-b border-brand-border pb-4">
                     <i class="fa-solid fa-truck-fast text-brand-green text-xl"></i>
-                    <h2 class="font-serif text-2xl font-bold">Ventas al Por Mayor y Clientes Especiales</h2>
+                    <h2 class="font-serif text-2xl font-bold">Estado de Clientes Especiales y Mayoristas</h2>
                 </div>
                 
-                <div class="bg-white border-2 border-dashed border-brand-border rounded-3xl p-10 text-center hover:border-brand-gold transition-colors">
-                    <div class="w-16 h-16 mx-auto bg-brand-lightGreen rounded-full flex items-center justify-center text-brand-green mb-4 shadow-sm">
-                        <i class="fa-solid fa-hammer text-2xl"></i>
+                <div class="bg-white rounded-3xl border border-brand-border shadow-soft overflow-hidden">
+                    <div class="px-6 py-4 border-b border-brand-border bg-brand-bg flex items-center justify-between">
+                        <h3 class="font-bold text-brand-dark">Cuentas y Pedidos Pendientes</h3>
+                        <button class="text-sm text-brand-green font-medium hover:underline"><i class="fa-solid fa-user-plus"></i> Nuevo Registro</button>
                     </div>
-                    <h3 class="font-serif font-bold text-xl mb-2 text-brand-dark">Espacio Reservado</h3>
-                    <p class="text-gray-500 max-w-lg mx-auto text-sm">Próximamente conectaremos esta sección para mostrar la tabla de inventarios, despachos al por mayor y el listado de clientes corporativos y cafeterías.</p>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Cliente</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Granel (Gramos)</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Empaques</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Estado</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm text-brand-dark divide-y divide-gray-100">
+                                <tr class="hover:bg-brand-lightGreen/10 transition-colors">
+                                    <td class="px-6 py-4 font-medium flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">C1</div>
+                                        Cliente 1
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-brand-dark">2000 gr</td>
+                                    <td class="px-6 py-4 font-bold text-brand-dark">3 bolsas</td>
+                                    <td class="px-6 py-4"><span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold border border-red-200">Debe</span></td>
+                                    <td class="px-6 py-4 text-center text-gray-400 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                </tr>
+                                <!-- Puedes agregar más clientes aquí abajo copiando el bloque <tr> anterior -->
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </section>
 
