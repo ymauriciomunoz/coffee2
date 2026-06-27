@@ -33,6 +33,14 @@
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
+    <!-- Botón de Música Flotante -->
+    <button id="music-toggle" class="fixed bottom-6 left-6 z-50 bg-white border border-brand-border text-brand-dark h-14 w-14 rounded-full shadow-lg hover:shadow-2xl hover:border-brand-gold hover:text-brand-gold hover:scale-105 transition-all duration-300 flex items-center justify-center text-xl" aria-label="Reproducir/Pausar Música">
+        <i class="fa-solid fa-play"></i>
+    </button>
+    <audio id="bg-music" loop>
+        <source src="cancion.mpeg" type="audio/mpeg">
+    </audio>
+
     <nav class="fixed w-full top-0 z-40 bg-brand-bg/90 backdrop-blur-md border-b border-brand-border transition-all duration-300" id="navbar">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">

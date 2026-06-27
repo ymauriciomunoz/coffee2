@@ -53,6 +53,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Inicializar calculadora
     calculateBrew();
+
+    // 6. Lógica de Música de Fondo
+    const musicBtn = document.getElementById('music-toggle');
+    const bgMusic = document.getElementById('bg-music');
+    let isPlaying = false;
+
+    if (musicBtn && bgMusic) {
+        musicBtn.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicBtn.innerHTML = '<i class="fa-solid fa-play"></i>';
+            } else {
+                bgMusic.play().catch(error => console.log("Error al reproducir audio:", error));
+                musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+            }
+            isPlaying = !isPlaying;
+        });
+
+        // Intentar autoplay (volumen bajo)
+        bgMusic.volume = 0.2;
+        bgMusic.play().then(() => {
+            isPlaying = true;
+            musicBtn.innerHTML = '<i class="fa-solid fa-pause"></i>';
+        }).catch(() => {
+            console.log("Autoplay bloqueado por el navegador. El usuario debe darle click al botón.");
+        });
+    }
 });
 
 // 4. Lógica de Pedidos a WhatsApp
