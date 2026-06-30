@@ -221,6 +221,7 @@
         </footer>
     </div>
 
+    <script src="js/scripts.js"></script>
     <script>
         // Lógica de acceso simple
         function checkPassword() {
@@ -301,8 +302,16 @@
                 if (!resClientes.ok) throw new Error("Error en clientes");
                 const textClientes = await resClientes.text();
 
-                // Procesar Ventas
-                const rowsVentas = textVentas.split('\\n').map(r => r.trim()).filter(r => r);
+                // Console logs requeridos
+                console.log("== DATOS OBTENIDOS DESDE GOOGLE SHEETS ==");
+                console.log("Datos de Ventas:\n", textVentas);
+                console.log("Datos de Clientes:\n", textClientes);
+                console.log("=========================================");
+
+                // Procesar Ventas (Reemplazando retornos de carro por si acaso, luego split)
+                const textVentasClean = textVentas.replace(/\r\n/g, '\n');
+                const rowsVentas = textVentasClean.split('\n').map(r => r.trim()).filter(r => r);
+                
                 const labels = [];
                 const data250 = [];
                 const data500 = [];
@@ -339,7 +348,9 @@
                 }
 
                 // Procesar Clientes
-                const rowsClientes = textClientes.split('\\n').map(r => r.trim()).filter(r => r);
+                const textClientesClean = textClientes.replace(/\r\n/g, '\n');
+                const rowsClientes = textClientesClean.split('\n').map(r => r.trim()).filter(r => r);
+                
                 const tbody = document.getElementById('clientes-tbody');
                 if (tbody && rowsClientes.length > 1) {
                     tbody.innerHTML = ''; // Limpiar filas anteriores
@@ -354,17 +365,19 @@
                             const estado = cols[4];
                             
                             // Parse deuda a moneda
-                            const deudaFormato = '$' + Number(deuda).toLocaleString('es-CO');
+                            const numDeuda = Number(deuda);
+                            const deudaFormato = !isNaN(numDeuda) ? '$' + numDeuda.toLocaleString('es-CO') : deuda;
+                            
                             // Estado css
                             let badgeClass = "bg-green-100 text-green-600 border-green-200 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400";
-                            if (estado.toLowerCase().includes('debe')) {
+                            if (estado.toLowerCase().includes('debe') || estado.toLowerCase().includes('pendiente')) {
                                 badgeClass = "bg-red-100 text-red-600 border-red-200 dark:bg-red-900/30 dark:border-red-800 dark:text-red-400";
                             }
                             
                             const tr = document.createElement('tr');
                             tr.className = "hover:bg-brand-lightGreen/10 transition-colors";
                             tr.innerHTML = `
-                                <td class="px-6 py-4 text-gray-500">${fecha}</td>
+                                <td class="px-6 py-4 text-gray-500 dark:text-gray-400">${fecha}</td>
                                 <td class="px-6 py-4 font-medium flex items-center gap-3">
                                     <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">${cliente.charAt(0).toUpperCase()}</div>
                                     ${cliente}
