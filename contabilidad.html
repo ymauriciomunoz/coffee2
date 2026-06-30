@@ -14,16 +14,16 @@
     <!-- Chart.js para los gráficos -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
-<body class="font-sans antialiased bg-brand-bg text-brand-dark min-h-screen flex flex-col">
+<body class="font-sans antialiased bg-brand-bg dark:bg-[#121413] text-brand-dark dark:text-[#F9F8F4] min-h-screen flex flex-col">
 
     <!-- Pantalla de Login -->
-    <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-brand-bg">
-        <div class="bg-white p-10 rounded-3xl shadow-xl max-w-sm w-full mx-4 border border-brand-border text-center">
-            <div class="h-16 w-16 mx-auto mb-6 bg-brand-lightGreen text-brand-green rounded-full flex items-center justify-center text-3xl">
+    <div id="login-screen" class="fixed inset-0 z-50 flex items-center justify-center bg-brand-bg dark:bg-[#121413]">
+        <div class="bg-white dark:bg-[#1A1C1A] p-10 rounded-3xl shadow-xl max-w-sm w-full mx-4 border border-brand-border dark:border-gray-800 text-center">
+            <div class="h-16 w-16 mx-auto mb-6 bg-brand-lightGreen dark:bg-brand-green/20 text-brand-green rounded-full flex items-center justify-center text-3xl">
                 <i class="fa-solid fa-lock"></i>
             </div>
             <h2 class="font-serif text-2xl font-bold mb-2">Área Privada</h2>
-            <p class="text-sm text-gray-500 mb-6">Ingresa la contraseña para acceder a la contabilidad.</p>
+            <p class="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-6">Ingresa la contraseña para acceder a la contabilidad.</p>
             
             <input type="password" id="password-input" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold mb-4" placeholder="Contraseña">
             <p id="login-error" class="text-red-500 text-xs mb-4 hidden">Contraseña incorrecta</p>
@@ -41,15 +41,15 @@
     <div id="dashboard" class="hidden flex-col flex-1">
         
         <!-- Header del Dashboard -->
-        <header class="bg-white border-b border-brand-border py-4">
+        <header class="bg-white dark:bg-[#1A1C1A] border-b border-brand-border dark:border-gray-800 py-4">
             <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
                 <div class="flex items-center gap-3">
-                    <div class="h-10 w-10 rounded-full overflow-hidden bg-brand-bg border border-gray-100 flex items-center justify-center text-brand-green">
+                    <div class="h-10 w-10 rounded-full overflow-hidden bg-brand-bg dark:bg-[#121413] border border-gray-100 dark:border-gray-800 flex items-center justify-center text-brand-green">
                         <i class="fa-solid fa-chart-pie"></i>
                     </div>
                     <span class="font-serif font-bold text-xl">Métricas y Ventas</span>
                 </div>
-                <a href="index.html" class="text-sm text-gray-500 hover:text-brand-green transition-colors">
+                <a href="index.html" class="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 hover:text-brand-green transition-colors">
                     <i class="fa-solid fa-house mr-1"></i> Ir a la tienda
                 </a>
             </div>
@@ -59,94 +59,94 @@
             
             <!-- Resumen Rápido -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div class="bg-white p-6 rounded-2xl border border-brand-border shadow-soft flex items-center gap-4 hover:border-brand-gold transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-brand-lightGreen text-brand-green flex items-center justify-center text-xl">
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-brand-lightGreen dark:bg-brand-green/20 text-brand-green flex items-center justify-center text-xl">
                         <i class="fa-solid fa-bag-shopping"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Ventas 250g</p>
-                        <p class="text-2xl font-serif font-bold text-brand-dark">7 uds</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Ventas 250g</p>
+                        <p class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">7 uds</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-brand-border shadow-soft flex items-center gap-4 hover:border-brand-gold transition-colors">
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
                     <div class="w-12 h-12 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl">
                         <i class="fa-solid fa-box-open"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Ventas 500g</p>
-                        <p class="text-2xl font-serif font-bold text-brand-dark">7 uds</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Ventas 500g</p>
+                        <p class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">7 uds</p>
                     </div>
                 </div>
-                <div class="bg-white p-6 rounded-2xl border border-brand-border shadow-soft flex items-center gap-4 hover:border-brand-gold transition-colors">
-                    <div class="w-12 h-12 rounded-full bg-gray-100 text-gray-600 flex items-center justify-center text-xl">
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 flex items-center justify-center text-xl">
                         <i class="fa-solid fa-arrow-trend-up"></i>
                     </div>
                     <div>
-                        <p class="text-xs text-gray-400 font-bold uppercase tracking-wider">Crecimiento (Mes)</p>
-                        <p class="text-2xl font-serif font-bold text-brand-dark">-15%</p>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Crecimiento (Mes)</p>
+                        <p class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">-15%</p>
                     </div>
                 </div>
             </div>
 
             <!-- SECCIÓN 1: Gráficos de Ventas -->
             <section>
-                <div class="flex items-center gap-2 mb-6 border-b border-brand-border pb-4">
+                <div class="flex items-center gap-2 mb-6 border-b border-brand-border dark:border-gray-800 pb-4">
                     <i class="fa-solid fa-chart-line text-brand-gold text-xl"></i>
                     <h2 class="font-serif text-2xl font-bold">Evolución de Ventas al Detal (Mensual)</h2>
                 </div>
                 
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
                     <!-- Gráfico 250g -->
-                    <div class="bg-white p-6 rounded-3xl border border-brand-border shadow-soft hover:shadow-lg transition-shadow">
-                        <h3 class="text-sm font-bold text-gray-500 mb-4">Evolución Bolsas 250g</h3>
+                    <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none hover:shadow-lg transition-shadow">
+                        <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">Evolución Bolsas 250g</h3>
                         <canvas id="chart250"></canvas>
                     </div>
                     
                     <!-- Gráfico 500g -->
-                    <div class="bg-white p-6 rounded-3xl border border-brand-border shadow-soft hover:shadow-lg transition-shadow">
-                        <h3 class="text-sm font-bold text-gray-500 mb-4">Evolución Bolsas 500g</h3>
+                    <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none hover:shadow-lg transition-shadow">
+                        <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">Evolución Bolsas 500g</h3>
                         <canvas id="chart500"></canvas>
                     </div>
                 </div>
 
                 <!-- Tabla de Fuente de Datos -->
-                <div class="mt-12 bg-white rounded-3xl border border-brand-border shadow-soft overflow-hidden">
-                    <div class="px-6 py-4 border-b border-brand-border bg-brand-bg flex items-center justify-between">
-                        <h3 class="font-bold text-brand-dark">Registro Manual de Ventas (Fuente de Datos)</h3>
+                <div class="mt-12 bg-white dark:bg-[#1A1C1A] rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none overflow-hidden">
+                    <div class="px-6 py-4 border-b border-brand-border dark:border-gray-800 bg-brand-bg dark:bg-[#121413] flex items-center justify-between">
+                        <h3 class="font-bold text-brand-dark dark:text-[#F9F8F4]">Registro Manual de Ventas (Fuente de Datos)</h3>
                         <button class="text-sm text-brand-green font-medium hover:underline"><i class="fa-solid fa-plus"></i> Añadir Fila</button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Cliente / Local</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Bolsas 250g</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Bolsas 500g</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Mes</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200 text-center">Acciones</th>
+                                <tr class="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Cliente / Local</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Bolsas 250g</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Bolsas 500g</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Mes</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700 text-center">Acciones</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-sm text-brand-dark divide-y divide-gray-100">
-                                <tr class="hover:bg-brand-lightGreen/20 transition-colors">
+                            <tbody class="text-sm text-brand-dark dark:text-[#F9F8F4] divide-y divide-gray-100">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
                                     <td class="px-6 py-4 font-medium">Local 1</td>
                                     <td class="px-6 py-4"><span class="bg-brand-green/10 text-brand-green px-2 py-1 rounded font-bold">5</span></td>
-                                    <td class="px-6 py-4"><span class="text-gray-400">-</span></td>
+                                    <td class="px-6 py-4"><span class="text-gray-400 dark:text-gray-500">-</span></td>
                                     <td class="px-6 py-4">Junio</td>
-                                    <td class="px-6 py-4 text-center text-gray-400 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 </tr>
-                                <tr class="hover:bg-brand-lightGreen/20 transition-colors">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
                                     <td class="px-6 py-4 font-medium">Local 2</td>
-                                    <td class="px-6 py-4"><span class="text-gray-400">-</span></td>
+                                    <td class="px-6 py-4"><span class="text-gray-400 dark:text-gray-500">-</span></td>
                                     <td class="px-6 py-4"><span class="bg-brand-gold/20 text-brand-gold px-2 py-1 rounded font-bold">5</span></td>
                                     <td class="px-6 py-4">Junio</td>
-                                    <td class="px-6 py-4 text-center text-gray-400 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 </tr>
-                                <tr class="hover:bg-brand-lightGreen/20 transition-colors">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
                                     <td class="px-6 py-4 font-medium">Local 3</td>
                                     <td class="px-6 py-4"><span class="bg-brand-green/10 text-brand-green px-2 py-1 rounded font-bold">2</span></td>
                                     <td class="px-6 py-4"><span class="bg-brand-gold/20 text-brand-gold px-2 py-1 rounded font-bold">2</span></td>
                                     <td class="px-6 py-4">Junio</td>
-                                    <td class="px-6 py-4 text-center text-gray-400 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -156,39 +156,39 @@
 
             <!-- SECCIÓN 2: Ventas al Por Mayor y Clientes -->
             <section>
-                <div class="flex items-center gap-2 mb-6 border-b border-brand-border pb-4">
+                <div class="flex items-center gap-2 mb-6 border-b border-brand-border dark:border-gray-800 pb-4">
                     <i class="fa-solid fa-truck-fast text-brand-green text-xl"></i>
                     <h2 class="font-serif text-2xl font-bold">Estado de Clientes Especiales y Mayoristas</h2>
                 </div>
                 
-                <div class="bg-white rounded-3xl border border-brand-border shadow-soft overflow-hidden">
-                    <div class="px-6 py-4 border-b border-brand-border bg-brand-bg flex items-center justify-between">
-                        <h3 class="font-bold text-brand-dark">Cuentas y Pedidos Pendientes</h3>
+                <div class="bg-white dark:bg-[#1A1C1A] rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none overflow-hidden">
+                    <div class="px-6 py-4 border-b border-brand-border dark:border-gray-800 bg-brand-bg dark:bg-[#121413] flex items-center justify-between">
+                        <h3 class="font-bold text-brand-dark dark:text-[#F9F8F4]">Cuentas y Pedidos Pendientes</h3>
                         <button class="text-sm text-brand-green font-medium hover:underline"><i class="fa-solid fa-user-plus"></i> Nuevo Registro</button>
                     </div>
                     <div class="overflow-x-auto">
                         <table class="w-full text-left border-collapse">
                             <thead>
-                                <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Fecha</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Cliente / Local</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Detalle del Pedido</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Total Deuda</th>
-                                    <th class="px-6 py-4 font-bold border-b border-gray-200">Estado Pago</th>
+                                <tr class="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Fecha</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Cliente / Local</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Detalle del Pedido</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Total Deuda</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Estado Pago</th>
                                 </tr>
                             </thead>
-                            <tbody class="text-sm text-brand-dark divide-y divide-gray-100">
-                                <tr class="hover:bg-brand-lightGreen/10 transition-colors">
-                                    <td class="px-6 py-4 text-gray-500">27/06/2026</td>
+                            <tbody class="text-sm text-brand-dark dark:text-[#F9F8F4] divide-y divide-gray-100">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/10 transition-colors">
+                                    <td class="px-6 py-4 text-gray-500 dark:text-gray-400 dark:text-gray-500">27/06/2026</td>
                                     <td class="px-6 py-4 font-medium flex items-center gap-3">
                                         <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">C1</div>
                                         Cliente 1
                                     </td>
                                     <td class="px-6 py-4">
-                                        <p class="font-bold">2000 gr <span class="font-normal text-gray-500">(Granel)</span></p>
-                                        <p class="font-bold">3 unidades <span class="font-normal text-gray-500">(Bolsas 250g)</span></p>
+                                        <p class="font-bold">2000 gr <span class="font-normal text-gray-500 dark:text-gray-400 dark:text-gray-500">(Granel)</span></p>
+                                        <p class="font-bold">3 unidades <span class="font-normal text-gray-500 dark:text-gray-400 dark:text-gray-500">(Bolsas 250g)</span></p>
                                     </td>
-                                    <td class="px-6 py-4 font-bold text-brand-dark">$210.000</td>
+                                    <td class="px-6 py-4 font-bold text-brand-dark dark:text-[#F9F8F4]">$210.000</td>
                                     <td class="px-6 py-4"><span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold border border-red-200">Debe</span></td>
                                 </tr>
                                 <!-- Siguientes filas (Excel) -->
@@ -200,8 +200,8 @@
 
         </main>
         
-        <footer class="bg-white border-t border-brand-border py-6 mt-auto">
-            <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400">
+        <footer class="bg-white dark:bg-[#1A1C1A] border-t border-brand-border dark:border-gray-800 py-6 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 dark:text-gray-500">
                 Panel Administrativo Privado - El Vagón del Café
             </div>
         </footer>

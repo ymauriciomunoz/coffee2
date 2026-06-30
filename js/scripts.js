@@ -1,4 +1,28 @@
+// 0. Inicializar Modo Oscuro (Corre inmediatamente)
+if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+    document.documentElement.classList.add('dark');
+} else {
+    document.documentElement.classList.remove('dark');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+    // 0.5. Lógica del Botón de Modo Oscuro
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const themeToggleBtnDesktop = document.getElementById('theme-toggle-desktop');
+    
+    const toggleTheme = () => {
+        if (document.documentElement.classList.contains('dark')) {
+            document.documentElement.classList.remove('dark');
+            localStorage.theme = 'light';
+        } else {
+            document.documentElement.classList.add('dark');
+            localStorage.theme = 'dark';
+        }
+    };
+
+    if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
+    if (themeToggleBtnDesktop) themeToggleBtnDesktop.addEventListener('click', toggleTheme);
+
     // 1. Lógica del Menú Móvil
     const mobileBtn = document.getElementById('mobile-btn');
     const mobileMenu = document.getElementById('mobile-menu');
