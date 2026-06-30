@@ -216,6 +216,201 @@
         
         <footer class="bg-white dark:bg-[#1A1C1A] border-t border-brand-border dark:border-gray-800 py-6 mt-auto">
             <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 dark:text-gray-500">
+            </div>
+            <h2 class="font-serif text-2xl font-bold mb-2">Área Privada</h2>
+            <p class="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-6">Ingresa la contraseña para acceder a la contabilidad.</p>
+            
+            <input type="password" id="password-input" class="w-full px-4 py-3 rounded-xl border border-gray-300 focus:outline-none focus:border-brand-gold focus:ring-1 focus:ring-brand-gold mb-4" placeholder="Contraseña">
+            <p id="login-error" class="text-red-500 text-xs mb-4 hidden">Contraseña incorrecta</p>
+            
+            <button onclick="checkPassword()" class="w-full py-3 bg-brand-dark hover:bg-brand-green text-white rounded-xl font-bold transition-colors">
+                Ingresar
+            </button>
+            <div class="mt-6">
+                <a href="index.html" class="text-sm text-brand-gold hover:underline"><i class="fa-solid fa-arrow-left"></i> Volver a la tienda</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dashboard (Oculto inicialmente) -->
+    <div id="dashboard" class="hidden flex-col flex-1">
+        
+        <!-- Header del Dashboard -->
+        <header class="bg-white dark:bg-[#1A1C1A] border-b border-brand-border dark:border-gray-800 py-4">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center">
+                <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-full overflow-hidden bg-brand-bg dark:bg-[#121413] border border-gray-100 dark:border-gray-800 flex items-center justify-center text-brand-green">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <span class="font-serif font-bold text-xl">Métricas y Ventas</span>
+                </div>
+                <div class="flex items-center gap-4">
+                    <!-- Foco Indicador de Excel -->
+                    <div id="excel-status" class="flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400 border border-red-200 dark:border-red-800 transition-colors">
+                        <div id="excel-status-dot" class="w-2 h-2 rounded-full bg-red-500 animate-pulse"></div>
+                        <span id="excel-status-text">Datos Locales</span>
+                    </div>
+                    
+                    <!-- Botón Modo Oscuro -->
+                    <button id="theme-toggle-desktop" class="text-gray-500 hover:text-brand-green dark:text-gray-400 dark:hover:text-brand-gold transition-colors text-xl">
+                        <i class="fa-solid fa-moon dark:hidden"></i>
+                        <i class="fa-solid fa-sun hidden dark:inline"></i>
+                    </button>
+
+                    <a href="index.html" class="text-sm text-gray-500 dark:text-gray-400 hover:text-brand-green transition-colors hidden sm:inline">
+                        <i class="fa-solid fa-house mr-1"></i> Tienda
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="flex-1 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 w-full space-y-12">
+            
+            <!-- Resumen Rápido -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-brand-lightGreen dark:bg-brand-green/20 text-brand-green flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-bag-shopping"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Ventas 250g</p>
+                        <p id="total-250g" class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">7 uds</p>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-brand-gold/10 text-brand-gold flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-box-open"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Ventas 500g</p>
+                        <p id="total-500g" class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">7 uds</p>
+                    </div>
+                </div>
+                <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-2xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none flex items-center gap-4 hover:border-brand-gold transition-colors">
+                    <div class="w-12 h-12 rounded-full bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-300 flex items-center justify-center text-xl">
+                        <i class="fa-solid fa-arrow-trend-up"></i>
+                    </div>
+                    <div>
+                        <p class="text-xs text-gray-400 dark:text-gray-500 font-bold uppercase tracking-wider">Crecimiento (Mes)</p>
+                        <p class="text-2xl font-serif font-bold text-brand-dark dark:text-[#F9F8F4]">-15%</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SECCIÓN 1: Gráficos de Ventas -->
+            <section>
+                <div class="flex items-center gap-2 mb-6 border-b border-brand-border dark:border-gray-800 pb-4">
+                    <i class="fa-solid fa-chart-line text-brand-gold text-xl"></i>
+                    <h2 class="font-serif text-2xl font-bold">Evolución de Ventas al Detal (Mensual)</h2>
+                </div>
+                
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                    <!-- Gráfico 250g -->
+                    <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none hover:shadow-lg transition-shadow">
+                        <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">Evolución Bolsas 250g</h3>
+                        <canvas id="chart250"></canvas>
+                    </div>
+                    
+                    <!-- Gráfico 500g -->
+                    <div class="bg-white dark:bg-[#1A1C1A] p-6 rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none hover:shadow-lg transition-shadow">
+                        <h3 class="text-sm font-bold text-gray-500 dark:text-gray-400 dark:text-gray-500 mb-4">Evolución Bolsas 500g</h3>
+                        <canvas id="chart500"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tabla de Fuente de Datos -->
+                <div class="mt-12 bg-white dark:bg-[#1A1C1A] rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none overflow-hidden">
+                    <div class="px-6 py-4 border-b border-brand-border dark:border-gray-800 bg-brand-bg dark:bg-[#121413] flex items-center justify-between">
+                        <h3 class="font-bold text-brand-dark dark:text-[#F9F8F4]">Registro Manual de Ventas (Fuente de Datos)</h3>
+                        <button class="text-sm text-brand-green font-medium hover:underline"><i class="fa-solid fa-plus"></i> Añadir Fila</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Cliente / Local</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Bolsas 250g</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Bolsas 500g</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Mes</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700 text-center">Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-sm text-brand-dark dark:text-[#F9F8F4] divide-y divide-gray-100">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
+                                    <td class="px-6 py-4 font-medium">Local 1</td>
+                                    <td class="px-6 py-4"><span class="bg-brand-green/10 text-brand-green px-2 py-1 rounded font-bold">5</span></td>
+                                    <td class="px-6 py-4"><span class="text-gray-400 dark:text-gray-500">-</span></td>
+                                    <td class="px-6 py-4">Junio</td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
+                                    <td class="px-6 py-4 font-medium">Local 2</td>
+                                    <td class="px-6 py-4"><span class="text-gray-400 dark:text-gray-500">-</span></td>
+                                    <td class="px-6 py-4"><span class="bg-brand-gold/20 text-brand-gold px-2 py-1 rounded font-bold">5</span></td>
+                                    <td class="px-6 py-4">Junio</td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                </tr>
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/20 transition-colors">
+                                    <td class="px-6 py-4 font-medium">Local 3</td>
+                                    <td class="px-6 py-4"><span class="bg-brand-green/10 text-brand-green px-2 py-1 rounded font-bold">2</span></td>
+                                    <td class="px-6 py-4"><span class="bg-brand-gold/20 text-brand-gold px-2 py-1 rounded font-bold">2</span></td>
+                                    <td class="px-6 py-4">Junio</td>
+                                    <td class="px-6 py-4 text-center text-gray-400 dark:text-gray-500 hover:text-brand-gold cursor-pointer"><i class="fa-solid fa-pen-to-square"></i></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECCIÓN 2: Ventas al Por Mayor y Clientes -->
+            <section>
+                <div class="flex items-center gap-2 mb-6 border-b border-brand-border dark:border-gray-800 pb-4">
+                    <i class="fa-solid fa-truck-fast text-brand-green text-xl"></i>
+                    <h2 class="font-serif text-2xl font-bold">Estado de Clientes Especiales y Mayoristas</h2>
+                </div>
+                
+                <div class="bg-white dark:bg-[#1A1C1A] rounded-3xl border border-brand-border dark:border-gray-800 shadow-soft dark:shadow-none overflow-hidden">
+                    <div class="px-6 py-4 border-b border-brand-border dark:border-gray-800 bg-brand-bg dark:bg-[#121413] flex items-center justify-between">
+                        <h3 class="font-bold text-brand-dark dark:text-[#F9F8F4]">Cuentas y Pedidos Pendientes</h3>
+                        <button class="text-sm text-brand-green font-medium hover:underline"><i class="fa-solid fa-user-plus"></i> Nuevo Registro</button>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-left border-collapse">
+                            <thead>
+                                <tr class="bg-gray-50 dark:bg-gray-800/50 text-gray-500 dark:text-gray-400 dark:text-gray-500 text-xs uppercase tracking-wider">
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Fecha</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Cliente / Local</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Detalle del Pedido</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Total Deuda</th>
+                                    <th class="px-6 py-4 font-bold border-b border-gray-200 dark:border-gray-700">Estado Pago</th>
+                                </tr>
+                            </thead>
+                            <tbody id="clientes-tbody" class="text-sm text-brand-dark dark:text-[#F9F8F4] divide-y divide-gray-100">
+                                <tr class="hover:bg-brand-lightGreen dark:bg-brand-green/20/10 transition-colors">
+                                    <td class="px-6 py-4 text-gray-500 dark:text-gray-400 dark:text-gray-500">27/06/2026</td>
+                                    <td class="px-6 py-4 font-medium flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">C1</div>
+                                        Cliente 1
+                                    </td>
+                                    <td class="px-6 py-4">
+                                        <p class="font-bold">2000 gr <span class="font-normal text-gray-500 dark:text-gray-400 dark:text-gray-500">(Granel)</span></p>
+                                        <p class="font-bold">3 unidades <span class="font-normal text-gray-500 dark:text-gray-400 dark:text-gray-500">(Bolsas 250g)</span></p>
+                                    </td>
+                                    <td class="px-6 py-4 font-bold text-brand-dark dark:text-[#F9F8F4]">$210.000</td>
+                                    <td class="px-6 py-4"><span class="bg-red-100 text-red-600 px-3 py-1 rounded-full text-xs font-bold border border-red-200">Debe</span></td>
+                                </tr>
+                                <!-- Siguientes filas (Excel) -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+        
+        <footer class="bg-white dark:bg-[#1A1C1A] border-t border-brand-border dark:border-gray-800 py-6 mt-auto">
+            <div class="max-w-7xl mx-auto px-4 text-center text-xs text-gray-400 dark:text-gray-500">
                 Panel Administrativo Privado - El Vagón del Café
             </div>
         </footer>
@@ -229,23 +424,17 @@
             const error = document.getElementById('login-error');
             
             if (input === 'vanessahermosa') {
-                // Ocultar login y mostrar dashboard
                 document.getElementById('login-screen').classList.add('hidden');
                 document.getElementById('dashboard').classList.remove('hidden');
                 document.getElementById('dashboard').classList.add('flex');
-                
-                // Inicializar gráficos después de mostrar el dashboard
                 initCharts();
             } else {
                 error.classList.remove('hidden');
             }
         }
 
-        // Permitir usar Enter
         document.getElementById('password-input').addEventListener('keypress', function (e) {
-            if (e.key === 'Enter') {
-                checkPassword();
-            }
+            if (e.key === 'Enter') checkPassword();
         });
 
         // Variables globales de gráficos
@@ -283,7 +472,6 @@
                 options: { responsive: true, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
             });
 
-            // Iniciar fetch de CSV
             fetchData();
         }
 
@@ -292,23 +480,21 @@
             const urlClientes = 'https://docs.google.com/spreadsheets/d/e/2PACX-1vT2fqNAcymr3qDJce5kvI1KzEPZTyi5yyT2Gv2sMky7vFJVrFfsGoDu07NbJ43be4J6JBB_jk0MawjF/pub?gid=18217608&single=true&output=csv';
 
             try {
-                // Fetch Ventas
-                const resVentas = await fetch(urlVentas);
+                // Fetch con omit credentials para arreglar el problema de CORS en redirecciones
+                const resVentas = await fetch(urlVentas, { credentials: 'omit' });
                 if (!resVentas.ok) throw new Error("Error en ventas");
                 const textVentas = await resVentas.text();
                 
-                // Fetch Clientes
-                const resClientes = await fetch(urlClientes);
+                const resClientes = await fetch(urlClientes, { credentials: 'omit' });
                 if (!resClientes.ok) throw new Error("Error en clientes");
                 const textClientes = await resClientes.text();
 
-                // Console logs requeridos
                 console.log("== DATOS OBTENIDOS DESDE GOOGLE SHEETS ==");
                 console.log("Datos de Ventas:\n", textVentas);
                 console.log("Datos de Clientes:\n", textClientes);
                 console.log("=========================================");
 
-                // Procesar Ventas (Reemplazando retornos de carro por si acaso, luego split)
+                // Procesar Ventas
                 const textVentasClean = textVentas.replace(/\r\n/g, '\n');
                 const rowsVentas = textVentasClean.split('\n').map(r => r.trim()).filter(r => r);
                 
@@ -318,7 +504,6 @@
                 let sum250 = 0;
                 let sum500 = 0;
 
-                // Empezamos desde 1 para saltar el header (Mes,Ventas_250g,Ventas_500g)
                 for (let i = 1; i < rowsVentas.length; i++) {
                     const cols = rowsVentas[i].split(',');
                     if (cols.length >= 3) {
@@ -353,8 +538,7 @@
                 
                 const tbody = document.getElementById('clientes-tbody');
                 if (tbody && rowsClientes.length > 1) {
-                    tbody.innerHTML = ''; // Limpiar filas anteriores
-                    // Empezamos desde 1 para saltar header (Fecha,Cliente,Detalle,Deuda,Estado)
+                    tbody.innerHTML = '';
                     for (let i = 1; i < rowsClientes.length; i++) {
                         const cols = rowsClientes[i].split(',');
                         if (cols.length >= 5) {
@@ -364,11 +548,9 @@
                             const deuda = cols[3];
                             const estado = cols[4];
                             
-                            // Parse deuda a moneda
                             const numDeuda = Number(deuda);
                             const deudaFormato = !isNaN(numDeuda) ? '$' + numDeuda.toLocaleString('es-CO') : deuda;
                             
-                            // Estado css
                             let badgeClass = "bg-green-100 text-green-600 border-green-200 dark:bg-green-900/30 dark:border-green-800 dark:text-green-400";
                             if (estado.toLowerCase().includes('debe') || estado.toLowerCase().includes('pendiente')) {
                                 badgeClass = "bg-red-100 text-red-600 border-red-200 dark:bg-red-900/30 dark:border-red-800 dark:text-red-400";
@@ -382,9 +564,7 @@
                                     <div class="w-8 h-8 rounded-full bg-brand-green text-white flex items-center justify-center text-xs font-bold">${cliente.charAt(0).toUpperCase()}</div>
                                     ${cliente}
                                 </td>
-                                <td class="px-6 py-4">
-                                    <p class="font-bold">${detalle}</p>
-                                </td>
+                                <td class="px-6 py-4"><p class="font-bold">${detalle}</p></td>
                                 <td class="px-6 py-4 font-bold text-brand-dark dark:text-[#F9F8F4]">${deudaFormato}</td>
                                 <td class="px-6 py-4"><span class="${badgeClass} px-3 py-1 rounded-full text-xs font-bold border">${estado.toUpperCase()}</span></td>
                             `;
@@ -393,14 +573,12 @@
                     }
                 }
 
-                // Cambiar Foco a Verde
                 document.getElementById('excel-status-dot').className = "w-2 h-2 rounded-full bg-green-500 animate-pulse";
                 document.getElementById('excel-status-text').innerText = "En Vivo (Google Sheets)";
                 document.getElementById('excel-status').className = "flex items-center gap-2 text-xs font-bold px-3 py-1.5 rounded-full bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800 transition-colors";
 
             } catch (e) {
                 console.log("Usando datos locales por fallo en la conexión:", e);
-                // Si falla se queda el foco en rojo y los datos mock actuales
                 document.getElementById('excel-status-text').innerText = "Fallo Conexión - Locales";
             }
         }
